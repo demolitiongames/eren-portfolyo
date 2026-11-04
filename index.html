@@ -3,7 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Arama Motorları (SEO) İçin Temel Bilgiler -->
     <title>Eren Örnek | Game & Film Composer</title>
+    <meta name="description" content="Eren Örnek - Game & Film Composer. Oyunlar ve sinema için orkestral müzikler ve sinematik atmosferler üreten besteci.">
+    <meta name="keywords" content="Eren Örnek, Eren Örnek müzik, Eren Örnek composer, oyun bestecisi, film müziği bestecisi, Eren Örnek besteci">
+    <meta name="author" content="Eren Örnek">
+    
+    <!-- Sosyal Medya ve Görseller İçin (Open Graph) -->
+    <meta property="og:title" content="Eren Örnek | Game & Film Composer">
+    <meta property="og:description" content="Oyunlar ve sinema için orkestral müzikler ve sinematik atmosferler besteliyorum.">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://erenornek.com">
+    <meta property="profile:first_name" content="Eren">
+    <meta property="profile:last_name" content="Örnek">
+    
+    <!-- Google'a Kim Olduğunu Anlatan Yapısal Veri (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Eren Örnek",
+      "url": "https://erenornek.com",
+      "jobTitle": "Game & Film Composer",
+      "description": "Composer for video games and films",
+      "knowsAbout": ["Music Composition", "Film Scoring", "Video Game Music", "Orchestral Music"]
+    }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -67,7 +94,7 @@
             animation: slow-pan 6s linear infinite;
         }
 
-        /* AVRUPA MİMARİSİ HAREKETLİ YÜZEYLER (Architectural Moving Surfaces) */
+        /* AVRUPA MİMARİSİ HAREKETLİ YÜZEYLER */
         .arch-panel {
             position: fixed;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.0) 100%);
@@ -281,7 +308,7 @@
         fetch('content/veri.json')
             .then(response => response.json())
             .then(data => {
-                // Yeni Eklenen Başlıklar
+                // Başlıklar
                 if(data.video_baslik) document.getElementById('video-baslik').innerText = data.video_baslik;
                 if(data.muzik_baslik) document.getElementById('muzik-baslik').innerText = data.muzik_baslik;
                 if(data.hakkimda_baslik) document.getElementById('hakkimda-baslik').innerText = data.hakkimda_baslik;
