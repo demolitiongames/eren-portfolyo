@@ -16,3 +16,6 @@ collections:
           - {label: "Hakkımda Yazısı", name: "hakkimda", widget: "text"}
           - {label: "Profil Fotoğrafı", name: "profil_foto", widget: "image", required: false}
           - {label: "SoundCloud veya Spotify Embed Kodu", name: "muzik_kodu", widget: "string", required: false}
+          - {label: "YouTube Video Embed Kodu", name: "youtube_video", widget: "string", required: false}
+          - {label: "E-Posta Adresin", name: "email", widget: "string", required: false}
+          - {label: "Ekstra İletişim (Sosyal Medya Linkleri vb.)", name: "iletisim_ekstra", widget: "text", required: false}
