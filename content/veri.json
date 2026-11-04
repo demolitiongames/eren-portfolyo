@@ -1,8 +1,12 @@
 {
+  "video_baslik": "Featured Video",
+  "youtube_video": "",
+  "muzik_baslik": "Audio Showcase",
+  "muzik_kodu": "",
+  "hakkimda_baslik": "About Me",
+  "hakkimda_altbaslik": "Crafting Emotions Through Sound",
   "hakkimda": "Oyunlar ve sinema için orkestral müzikler besteliyorum. REAPER ile sinematik atmosferler yaratıyorum.",
   "profil_foto": "",
-  "muzik_kodu": "",
-  "youtube_video": "",
   "email": "contact@erenornek.com",
   "iletisim_ekstra": "Instagram: @erenornek \nYouTube: Eren Örnek"
 }
