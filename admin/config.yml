@@ -13,9 +13,13 @@ collections:
         name: "homepage"
         file: "content/veri.json"
         fields:
+          - {label: "Video Bölüm Başlığı", name: "video_baslik", widget: "string", required: false}
+          - {label: "YouTube Video Embed Kodu", name: "youtube_video", widget: "string", required: false}
+          - {label: "Müzik Bölüm Başlığı", name: "muzik_baslik", widget: "string", required: false}
+          - {label: "SoundCloud veya Spotify Kodu", name: "muzik_kodu", widget: "string", required: false}
+          - {label: "Hakkımda Ana Başlığı", name: "hakkimda_baslik", widget: "string", required: false}
+          - {label: "Hakkımda Alt Başlığı (Motto)", name: "hakkimda_altbaslik", widget: "string", required: false}
           - {label: "Hakkımda Yazısı", name: "hakkimda", widget: "text"}
           - {label: "Profil Fotoğrafı", name: "profil_foto", widget: "image", required: false}
-          - {label: "SoundCloud veya Spotify Embed Kodu", name: "muzik_kodu", widget: "string", required: false}
-          - {label: "YouTube Video Embed Kodu", name: "youtube_video", widget: "string", required: false}
           - {label: "E-Posta Adresin", name: "email", widget: "string", required: false}
           - {label: "Ekstra İletişim (Sosyal Medya Linkleri vb.)", name: "iletisim_ekstra", widget: "text", required: false}
