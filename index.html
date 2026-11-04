@@ -1,56 +1,276 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eren Örnek - Game & Cinema Composer</title>
+    <title>Eren Örnek | Game & Film Composer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Netlify Identity (Panel girişi için) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        cinematic: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        accent: '#60A5FA', 
+                        darkbg: '#040b16', 
+                        cardbg: '#0a1526', 
+                        navy: '#0d1b2a' 
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { background-color: #040b16; color: #e2e8f0; font-family: 'Georgia', serif; }
-        .glow-text { text-shadow: 0 0 10px rgba(96, 165, 250, 0.5); }
-        .glow-box { box-shadow: 0 0 20px rgba(96, 165, 250, 0.15); border: 1px solid rgba(96, 165, 250, 0.3); }
+        body {
+            background-color: #040b16;
+            color: #e5e5e5;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #040b16; }
+        ::-webkit-scrollbar-thumb { background: #1e40af; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #60A5FA; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(4, 11, 22, 0.85), rgba(4, 11, 22, 1)), url('https://placehold.co/1920x1080/040b16/60A5FA?text=Cinematic+Orchestra+Blue');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Gradient Text Animation */
+        @keyframes slow-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #60A5FA, #93C5FD, #bfdbfe, #60A5FA);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: slow-pan 6s linear infinite;
+        }
+
+        /* AVRUPA MİMARİSİ HAREKETLİ YÜZEYLER (Architectural Moving Surfaces) */
+        .arch-panel {
+            position: fixed;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(3px);
+            z-index: 1; 
+            pointer-events: none;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .arch-1 {
+            width: 45vw; height: 130vh;
+            top: -15%; left: -10%;
+            animation: archMove1 22s infinite alternate ease-in-out;
+        }
+        .arch-2 {
+            width: 55vw; height: 110vh;
+            bottom: -20%; right: -5%;
+            background: linear-gradient(315deg, rgba(96, 165, 250, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.04);
+            animation: archMove2 28s infinite alternate-reverse ease-in-out;
+        }
+        @keyframes archMove1 {
+            0% { transform: translateY(0) rotate(12deg); }
+            100% { transform: translateY(50px) rotate(15deg) scale(1.02); }
+        }
+        @keyframes archMove2 {
+            0% { transform: translateY(0) rotate(-8deg); }
+            100% { transform: translateY(-40px) rotate(-11deg) scale(1.03); }
+        }
+        
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            opacity: 0.25;
+            animation: slow-pan 12s ease-in-out infinite alternate;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-8 relative overflow-hidden">
-    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse"></div>
-    
-    <header class="text-center mt-12 mb-16 z-10">
-        <img id="profil-foto" src="https://placehold.co/150x150/1e3a8a/60A5FA?text=Eren" alt="Eren Örnek" class="w-32 h-32 rounded-full mx-auto mb-6 glow-box object-cover">
-        <h1 class="text-5xl font-bold mb-2 text-blue-400 glow-text tracking-wide">Eren Örnek</h1>
-        <p class="text-xl text-blue-200 uppercase tracking-[0.3em] text-sm">Game & Film Composer</p>
-    </header>
+<body class="antialiased selection:bg-accent selection:text-black">
 
-    <main class="w-full max-w-4xl z-10">
-        <section id="about" class="mb-16 bg-[#0a1526] p-8 rounded-[2rem] glow-box text-center">
-            <h2 class="text-2xl font-semibold mb-4 text-blue-300">Hakkımda</h2>
-            <p id="hakkimda-metin" class="text-lg leading-relaxed text-gray-300">
-                Oyunlar ve sinema için orkestral müzikler besteliyorum. REAPER ile sinematik atmosferler yaratıyorum.
-            </p>
-        </section>
+    <!-- Mimari Hareketli Yüzeyler -->
+    <div class="arch-panel arch-1"></div>
+    <div class="arch-panel arch-2"></div>
 
-        <section id="listen" class="mb-16 bg-[#0a1526] p-8 rounded-[2rem] glow-box text-center">
-            <h2 class="text-2xl font-semibold mb-6 text-blue-300">Dinle & İzle</h2>
-            
-            <div id="muzik-kutu" class="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg mb-8">
-                <!-- SoundCloud/Spotify -->
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur bg-darkbg/80 border-b border-blue-900/30 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="font-cinematic text-2xl font-bold tracking-[0.2em] text-white hover:text-accent transition-colors drop-shadow-md">EREN ÖRNEK</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#listen" class="hover:text-accent text-blue-100/70 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 uppercase tracking-[0.15em]">Listen</a>
+                        <a href="#about" class="hover:text-accent text-blue-100/70 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 uppercase tracking-[0.15em]">About</a>
+                        <a href="#contact" class="hover:text-accent text-blue-100/70 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 uppercase tracking-[0.15em]">Contact</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </nav>
 
-            <div id="youtube-kutu" class="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg">
-                <!-- YouTube -->
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
+        <div class="glow-blob w-[40rem] h-[40rem] bg-blue-500/30 top-[-10%] left-[-10%]"></div>
+        <div class="glow-blob w-[30rem] h-[30rem] bg-accent/20 bottom-[-10%] right-[-5%]" style="animation-delay: -3s;"></div>
         
-        <section id="contact" class="text-center mb-12">
-            <h2 class="text-2xl font-semibold mb-6 text-blue-300">İletişim</h2>
-            <a id="email-buton" href="mailto:contact@erenornek.com" class="inline-block px-8 py-4 bg-blue-900/50 hover:bg-blue-800/70 text-blue-100 rounded-full transition-all duration-300 border border-blue-500/30 hover:border-blue-400 glow-box">
-                Birlikte Çalışalım
+        <div class="text-center px-4 z-10 max-w-4xl mx-auto">
+            <h2 class="text-accent font-medium tracking-[0.4em] uppercase text-sm md:text-sm mb-6 drop-shadow-lg opacity-90">Original Music & Soundscapes</h2>
+            <h1 class="font-cinematic text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight drop-shadow-2xl gradient-text">
+                EREN ÖRNEK
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100/70 font-light mb-12 tracking-widest">
+                Game & Film Composer
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#listen" class="px-10 py-3 border border-accent text-accent hover:bg-accent hover:text-darkbg transition-all duration-500 rounded-full uppercase tracking-[0.2em] text-xs font-semibold shadow-[0_0_15px_rgba(96,165,250,0.2)] hover:shadow-[0_0_25px_rgba(96,165,250,0.6)]">
+                    Hear My Work
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#listen" class="text-blue-400/40 hover:text-accent transition-colors duration-300">
+                <i class="fa-solid fa-chevron-down text-2xl drop-shadow-md"></i>
             </a>
-            <p id="iletisim-ekstra" class="mt-6 text-gray-400 whitespace-pre-line"></p>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Listen Section -->
+    <section id="listen" class="py-24 bg-darkbg relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 relative z-10">
+                <h2 class="font-cinematic text-4xl md:text-5xl font-bold text-white mb-6 tracking-wide">Selected Works</h2>
+                <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent mx-auto"></div>
+                <p class="mt-8 text-blue-100/50 max-w-2xl mx-auto font-light tracking-wide text-lg">A collection of cinematic orchestral scores, ambient soundscapes, and interactive game music.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+                
+                <!-- YouTube Box (Panelden Güncellenir) -->
+                <div class="bg-cardbg rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-blue-900/30 group transition-all duration-500 flex flex-col">
+                    <div class="p-6 pb-4 border-b border-blue-900/30">
+                        <h3 class="font-cinematic text-xl font-bold text-white tracking-wide"><i class="fa-brands fa-youtube text-accent mr-3 drop-shadow-[0_0_8px_rgba(96,165,250,0.6)]"></i> Featured Video</h3>
+                    </div>
+                    <div id="youtube-kutu" class="w-full flex-grow bg-[#020610] min-h-[300px] flex items-center justify-center p-4">
+                        <p class="text-blue-400/30 tracking-widest text-sm font-light">Panelden YouTube Embed kodunuzu ekleyin</p>
+                    </div>
+                </div>
+
+                <!-- SoundCloud Box (Panelden Güncellenir) -->
+                <div class="bg-cardbg rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-blue-900/30 group transition-all duration-500 flex flex-col">
+                    <div class="p-6 pb-4 border-b border-blue-900/30">
+                        <h3 class="font-cinematic text-xl font-bold text-white tracking-wide"><i class="fa-brands fa-soundcloud text-accent mr-3 drop-shadow-[0_0_8px_rgba(96,165,250,0.6)]"></i> Audio Showcase</h3>
+                    </div>
+                    <div id="muzik-kutu" class="w-full flex-grow bg-[#020610] min-h-[300px] flex items-center justify-center p-4">
+                        <p class="text-blue-400/30 tracking-widest text-sm font-light">Panelden SoundCloud Embed kodunuzu ekleyin</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-navy border-t border-b border-blue-900/20 relative overflow-hidden z-10">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2360A5FA\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Profile Image (Panelden Güncellenir) -->
+                <div class="w-full md:w-1/3">
+                    <div class="relative w-64 h-64 md:w-full md:h-[28rem] mx-auto rounded-full md:rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.8)] border border-blue-800/20 group">
+                        <div class="absolute inset-0 bg-accent/10 group-hover:bg-transparent transition-colors duration-700 z-10 mix-blend-overlay"></div>
+                        <img id="profil-foto" src="https://placehold.co/600x800/061121/60A5FA?text=Foto%C4%9Fraf+Bekleniyor" alt="Eren Örnek" class="w-full h-full object-cover filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-1000 transform group-hover:scale-105">
+                    </div>
+                </div>
+                
+                <!-- Biography (Panelden Güncellenir) -->
+                <div class="w-full md:w-2/3">
+                    <h2 class="font-cinematic text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide">About Me</h2>
+                    <h3 class="text-accent text-sm tracking-[0.3em] uppercase mb-10 font-medium opacity-90">Crafting Emotions Through Sound</h3>
+                    
+                    <div id="hakkimda-metin" class="space-y-6 text-blue-100/70 font-light leading-relaxed text-lg whitespace-pre-line">
+                        Panelden "Hakkımda" yazınızı girdiğinizde burada görünecektir.
+                    </div>
+
+                    <div class="mt-12 flex flex-wrap gap-8">
+                        <div class="flex items-center text-sm text-blue-300/50 tracking-widest uppercase">
+                            <i class="fa-solid fa-desktop text-accent mr-3 text-lg drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]"></i> FL Studio / REAPER
+                        </div>
+                        <div class="flex items-center text-sm text-blue-300/50 tracking-widest uppercase">
+                            <i class="fa-solid fa-music text-accent mr-3 text-lg drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]"></i> Orchestral Scoring
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-darkbg relative overflow-hidden z-10">
+        <div class="absolute top-1/4 left-1/4 w-[35rem] h-[35rem] bg-accent/5 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[35rem] h-[35rem] bg-blue-600/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-cinematic text-4xl md:text-5xl font-bold text-white mb-6 tracking-wide">Let's Create Together</h2>
+            <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-10"></div>
+            
+            <p class="text-blue-100/60 mb-14 text-lg font-light tracking-wide max-w-2xl mx-auto">
+                Looking for original music for your next game, film, or media project? Feel free to reach out to discuss how we can collaborate.
+            </p>
+
+            <!-- Direct Email Button (Panelden Güncellenir) -->
+            <a id="email-buton" href="mailto:contact@erenornek.com" class="inline-flex items-center px-10 py-4 bg-transparent border border-accent text-accent font-medium rounded-full hover:bg-accent hover:text-darkbg transition-all duration-500 uppercase tracking-[0.2em] text-sm shadow-[0_0_15px_rgba(96,165,250,0.15)] hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]">
+                <i class="fa-regular fa-paper-plane mr-4 text-xl"></i>
+                <span id="email-text">contact@erenornek.com</span>
+            </a>
+
+            <!-- Social / Ekstra İletişim (Panelden Güncellenir) -->
+            <div class="mt-20">
+                <p class="text-xs text-blue-400/40 uppercase tracking-[0.3em] mb-6 font-medium">Links & Socials</p>
+                <div id="iletisim-ekstra" class="text-blue-100/70 font-light tracking-wide whitespace-pre-line">
+                    Panelden ekstra iletişim (Instagram, YouTube vb.) linklerinizi buraya ekleyebilirsiniz.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020408] py-10 border-t border-blue-900/20 text-center relative z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-blue-500/30 text-sm font-light tracking-widest">
+                &copy; <script>document.write(new Date().getFullYear())</script> Eren Örnek. All rights reserved. <br>
+                <span class="text-xs text-blue-600/30 mt-4 block uppercase tracking-[0.2em]">Designed for Game & Film Audio</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- CMS Veri Çekme Scripti -->
     <script>
+        // Admin panele girişi tetikleme
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
@@ -61,28 +281,21 @@
             });
         }
 
+        // Paneldeki JSON verisini siteye basma
         fetch('content/veri.json')
             .then(response => response.json())
             .then(data => {
-                if(data.hakkimda) document.getElementById('hakkimda-metin').innerText = data.hakkimda;
+                if(data.hakkimda) document.getElementById('hakkimda-metin').innerHTML = data.hakkimda;
                 if(data.profil_foto) document.getElementById('profil-foto').src = data.profil_foto;
                 
-                if(data.muzik_kodu) {
-                    document.getElementById('muzik-kutu').innerHTML = data.muzik_kodu;
-                    document.getElementById('muzik-kutu').classList.remove('hidden');
-                } else {
-                    document.getElementById('muzik-kutu').classList.add('hidden');
-                }
+                if(data.muzik_kodu) document.getElementById('muzik-kutu').innerHTML = data.muzik_kodu;
+                if(data.youtube_video) document.getElementById('youtube-kutu').innerHTML = data.youtube_video;
 
-                if(data.youtube_video) {
-                    document.getElementById('youtube-kutu').innerHTML = data.youtube_video;
-                    document.getElementById('youtube-kutu').classList.remove('hidden');
-                } else {
-                    document.getElementById('youtube-kutu').classList.add('hidden');
+                if(data.email) {
+                    document.getElementById('email-buton').href = "mailto:" + data.email;
+                    document.getElementById('email-text').innerText = data.email;
                 }
-
-                if(data.email) document.getElementById('email-buton').href = "mailto:" + data.email;
-                if(data.iletisim_ekstra) document.getElementById('iletisim-ekstra').innerText = data.iletisim_ekstra;
+                if(data.iletisim_ekstra) document.getElementById('iletisim-ekstra').innerHTML = data.iletisim_ekstra;
             })
             .catch(e => console.log('Sistem panel verisini bekliyor...'));
     </script>
