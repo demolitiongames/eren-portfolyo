@@ -7,6 +7,6 @@
   "email": "contact.erenornek@gmail.com",
   "video_baslik": "Featured Video",
   "hakkimda_altbaslik": "Driving Emotions Wild Through Sound",
-  "youtube_video": "https://www.youtube.com/watch?v=4wSl962lI4Q",
+  "youtube_video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4wSl962lI4Q?si=JQHX_8qXfw9Y7lLl&amp;controls=0&amp;start=40\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
   "hakkimda_baslik": "About Me"
 }
